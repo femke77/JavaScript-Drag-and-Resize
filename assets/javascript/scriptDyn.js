@@ -35,6 +35,17 @@ function createBox() {
   box.style.top = topPos + "px";
   box.style.left = leftPos + "px";
 
+  let textbox = document.createElement("p");
+  let userText = document.getElementById("textbox").value;
+  if (userText === "") {
+    userText = boxId;
+  }
+  let content = document.createTextNode(userText);
+  textbox.className = "box-text"
+  textbox.appendChild(content);
+  box.appendChild(textbox);
+
+
   box.addEventListener("mousedown", mousedown);
 
   function mousedown(e) {

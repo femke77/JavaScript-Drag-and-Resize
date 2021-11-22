@@ -4,10 +4,15 @@
     width: 100px;
     position: absolute;
     background-color: lightcoral;
-
+    z-index: 1;
 
 }
 
+.box-text {
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
 
 .resizer {
     position: absolute;
