@@ -4,7 +4,8 @@
     width: 100px;
     position: absolute;
     background-color: rgb(187, 64, 64);
-  
+    box-sizing: border-box;
+    border: 1px solid black;
     z-index: 1;
 
 }
@@ -16,7 +17,7 @@
 }
 
 .box:focus {
-    background-color: rgb(207, 152, 152);
+    border: 3px solid black;
   }
 
 .resizer {
