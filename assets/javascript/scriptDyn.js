@@ -139,8 +139,6 @@ function createBox() {
 
 
 // TODO:
-// 1. focus
+
 // 2. resize by edge as well (add resizer as a border)
 
-// optional
-// 3. if mouse moves off resizer allow it to still work (change where the listner is)

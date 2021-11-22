@@ -1,19 +1,28 @@
+html {
+    background: #485354;
+}
+
+body {
+    background-color: #485354;
+}
+
+p {
+    color: white;
+}
 
 .box {
     height: 100px;
     width: 100px;
     position: absolute;
     background-color: rgb(187, 64, 64);
-    box-sizing: border-box;
+    box-sizing: border-box;  
     border: 1px solid black;
     z-index: 1;
-
 }
 
 .box-text {
     text-align: center;
     padding: 20px;
-    color: white;
 }
 
 .box:focus {
