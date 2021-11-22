@@ -3,6 +3,7 @@ var leftPos = 0;
 var topPos = 100;
 var isResizing = false;
 
+
 function createBox() {
   count++;
   leftPos += 20;
@@ -13,9 +14,10 @@ function createBox() {
   let box = document.createElement("div");
   box.id = boxId;
   box.className = "box";
+  box.setAttribute("tabindex", "0");
   container.appendChild(box);
 
-  // Create and append resizer divs
+  // CREATING RESIZER AREAS
   let ne = document.createElement("div");
   let nw = document.createElement("div");
   let se = document.createElement("div");
@@ -31,9 +33,13 @@ function createBox() {
   sw.setAttribute("class", "resizer sw");
   se.setAttribute("class", "resizer se");
 
+  // STACK BOXES IN STAGGARD FASHION
+
   box.style.position = "absolute";
   box.style.top = topPos + "px";
   box.style.left = leftPos + "px";
+
+  // LABELING OF THE BOX
 
   let textbox = document.createElement("p");
   let userText = document.getElementById("textbox").value;
@@ -41,14 +47,16 @@ function createBox() {
     userText = boxId;
   }
   let content = document.createTextNode(userText);
-  textbox.className = "box-text"
+  textbox.className = "box-text";
   textbox.appendChild(content);
   box.appendChild(textbox);
 
+  // EVENT LISTENERS
 
   box.addEventListener("mousedown", mousedown);
 
   function mousedown(e) {
+    
     box.addEventListener("mousemove", mousemove);
     box.addEventListener("mouseup", mouseup);
 
@@ -73,6 +81,7 @@ function createBox() {
     function mouseup() {
       box.removeEventListener("mousemove", mousemove);
       box.removeEventListener("mouseup", mouseup);
+      
     }
   }
 
@@ -83,6 +92,7 @@ function createBox() {
     resizer.addEventListener("mousedown", mousedown);
 
     function mousedown(e) {
+     
       currentResizer = e.target;
       isResizing = true;
 
@@ -93,6 +103,7 @@ function createBox() {
       box.addEventListener("mouseup", mouseup);
 
       function mousemove(e) {
+         
         const rect = box.getBoundingClientRect();
 
         if (currentResizer.classList.contains("se")) {
@@ -117,11 +128,19 @@ function createBox() {
       }
 
       function mouseup() {
-            box.removeEventListener("mousemove", mousemove);
-            box.removeEventListener("mouseup", mouseup);
-            isResizing = false;
-        }
-
+        box.removeEventListener("mousemove", mousemove);
+        box.removeEventListener("mouseup", mouseup);
+        isResizing = false;
+      }
     }
   }
 }
+
+
+
+// TODO:
+// 1. focus
+// 2. resize by edge as well (add resizer as a border)
+
+// optional
+// 3. if mouse moves off resizer allow it to still work (change where the listner is)
